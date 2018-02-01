@@ -10,6 +10,6 @@ This repo uses two libratires:
 
 Run the following command to run your  model
 
-$ node index.js
+'$ node index.js'
 
 if you need the data for testing download the data file(.csv) from [here](http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv)
