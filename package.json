@@ -1,0 +1,25 @@
+{
+  "name": "ml-with",
+  "version": "1.0.0",
+  "description": "\"machine learning with js simple test\"",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": " \"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "keywords": [
+    "\"machine",
+    "learning\"",
+    "\"ML\"",
+    "\"javascript\"",
+    "\"ML",
+    "with",
+    "js\""
+  ],
+  "author": "Suresh",
+  "license": "MIT",
+  "dependencies": {
+    "csvtojson": "^1.1.9",
+    "ml-regression": "^4.4.2"
+  }
+}
