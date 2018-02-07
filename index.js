@@ -26,7 +26,20 @@ csv()
     })
     .on('done', () => {
         dressData(); // To get data points from JSON Objects
-        performRegression(); 
+        rl.question('Enter the choice for regression, 1 for Linear and 2 for Polynomial :', (answer) => {
+        	if (answer == 1) {
+        		performLinearRegression();
+        	} else if (answer ==2) {
+        		performPolynomialRegression();
+        	}
+        		else {
+        			
+        			console.log('Wrong input. Press CTRL+C to exit')
+        			
+        		}
+        	
+        })
+       //performRegression(); 
     });
 
 function dressData() {
@@ -41,10 +54,17 @@ function dressData() {
      *
      * Hence, while adding the data points,
      * we need to parse the String value as a Float.
+     * 
      */
+    const dataKey = Object.keys(csvData[0]);
+    console.log('Data available for:  ', dataKey, 'Media type ML executed :',dataKey[1]);
+
     csvData.forEach((row) => {
-        X.push(parseFloat(row.TV));
-        y.push(parseFloat(row.Sales));
+    		
+    	X.push(parseFloat(row.TV));
+      y.push(parseFloat(row.Sales));
+
+    	        
     });
 }
 
@@ -52,18 +72,22 @@ function dressData() {
 //     return parseFloat(s);
 // }
 
-function performRegression() {
-    // regressionModel = new SLR(X, y); // Train the model on training data
-    // console.log('simple linear regression',regressionModel.toString(3));
+function performPolynomialRegression() {
     regressionModel = new PolynomialRegression(X, y, degree);
-    console.log(regressionModel.toString(3));
+    console.log('Performing Polynomial Regression', regressionModel.toString(3));
+    predictOutput();
+}
+
+function performLinearRegression() {
+    regressionModel = new SLR(X, y); // Train the model on training data
+    console.log('Performing Linear regression',regressionModel.toString(3));
     predictOutput();
 }
 
 function predictOutput() {
     rl.question('Enter input X for prediction (Press CTRL+C to exit) : ', (answer1) => {
-        console.log(`At X = ${answer1}, y =  ${regressionModel.predict(parseFloat(answer1))}`);
-        predictOutput();
+    console.log(`At X = ${answer1}, y =  ${regressionModel.predict(parseFloat(answer1))}`);
+    predictOutput();
        
     });
 }
